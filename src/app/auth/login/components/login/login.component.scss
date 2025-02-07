@@ -1,3 +1,20 @@
-.centered {
-    text-align: center;
+.content-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .input {
+        width: 400px;
+    }
+
+    .content-password {
+        display: flex;
+        align-items: center;
+    }
+
+    .item-center {
+        text-align: center;
+    }
 }
+

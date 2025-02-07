@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginModule, LoginRoutingModule } from './auth/login';
+import { RegisterPjRoutingModule } from './auth/register-pj/register-pj.routing.module';
+import { RegisterPjModule } from './auth/register-pj';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { LoginModule, LoginRoutingModule } from './auth/login';
     MatButtonModule,
     LoginModule,
     LoginRoutingModule,
+    RegisterPjModule,
+    RegisterPjRoutingModule,
 
     AppRoutingModule
   ],
