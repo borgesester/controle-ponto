@@ -4,10 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginModule, LoginRoutingModule } from './auth/login';
-import { RegisterPjRoutingModule } from './auth/register-pj/register-pj.routing.module';
+import { RegisterPjRoutingModule } from './auth/register-pj/register-pj-routing.module';
 import { RegisterPjModule } from './auth/register-pj';
+import { RegisterPfRoutingModule } from './auth/register-pf/register-pf-routing.module';
+import { RegisterPfModule } from './auth/register-pf';
+import { MatIconModule } from '@angular/material/icon';
+import { EmployeeModule, EmployeeRoutingModule } from './employee';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,16 @@ import { RegisterPjModule } from './auth/register-pj';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
     LoginModule,
     LoginRoutingModule,
     RegisterPjModule,
     RegisterPjRoutingModule,
+    RegisterPfModule,
+    RegisterPfRoutingModule,
+    EmployeeModule,
+    EmployeeRoutingModule,
 
     AppRoutingModule
   ],

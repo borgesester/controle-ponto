@@ -1,31 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterPjComponent } from './components/register-pj';
+import { RegisterPfComponent } from './components/register-pf/register-pf.component';
 import { RouterModule } from '@angular/router';
-import { RegistrationPjComponent } from './components/registration-pj.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { RegistrationPfComponent } from './components/';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared';
-import { RegisterPjService } from './services';
+import { RegisterPfService } from './services';
 
 
 
 @NgModule({
   declarations: [
-    RegisterPjComponent,
-    RegistrationPjComponent
+    RegisterPfComponent,
+    RegistrationPfComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatListModule,
@@ -35,7 +33,7 @@ import { RegisterPjService } from './services';
     SharedModule
   ],
   providers: [
-    RegisterPjService
+    RegisterPfService
   ]
 })
-export class RegisterPjModule { }
+export class RegisterPfModule { }

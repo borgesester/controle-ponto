@@ -1,0 +1,46 @@
+<div>
+    <mat-list>
+        <mat-list-item>
+            <a mat-button color="warn" [routerLink]="['/funcionario/listagem']">Ver Lançamentos</a>
+        </mat-list-item>
+        <mat-list-item>
+            <strong>Data:</strong>&nbsp; {{currentDate}}
+        </mat-list-item>
+        <mat-list-item>
+            <strong>Localização:</strong>&nbsp; {{getLocation()}}
+            &nbsp;
+            <a target="_blank" *ngIf="geoLocation" [href]="getUrlMaps()">
+                abrir mapa
+            </a>
+        </mat-list-item>
+        <mat-list-item *ngIf="showInitWork()">
+            <button 
+                mat-raised-button color="primary" 
+                (click)="initWork()">
+                    Iniciar Trabalho
+            </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="showInitLunch()">
+            <button 
+                mat-raised-button color="primary" 
+                (click)="initLunch()">
+                    Iniciar Almoço
+            </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="showFinishLunch()">
+            <button 
+                mat-raised-button color="primary" 
+                (click)="finishLunch()">
+                    Terminar Almoço
+            </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="showFinishWork()">
+            <button 
+                mat-raised-button color="primary" 
+                (click)="finishWork()">
+                    Terminar Trabalho
+            </button>
+        </mat-list-item>
+    </mat-list>
+
+</div>

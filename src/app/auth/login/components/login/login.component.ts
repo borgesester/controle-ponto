@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             // this.router.navigate(['/admin']);
           } else {
             alert('Funcionário');
-            // this.router.navigate(['/funcionario']);
+            this.router.navigate(['/funcionario']);
           }
         },
         error: (err) => {
