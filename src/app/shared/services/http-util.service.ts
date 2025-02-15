@@ -47,4 +47,13 @@ export class HttpUtilService {
     
     return JSON.parse(atob(localStorage['token'].split('.')[1]));
   }
+
+  getProfile() {
+    if(!localStorage['token']){
+      return '';
+    }
+
+    const dataUser = this.getDataUser();
+    return dataUser ? dataUser.role : ''; 
+  }
 }

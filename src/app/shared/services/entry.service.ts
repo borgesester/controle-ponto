@@ -43,4 +43,30 @@ export class EntryService {
         ), this.httpUtil.headers()
     );
   }
+
+  listEntryByEmployee(
+    employeeId: string, 
+    page: number, 
+    order: string, 
+    direction: string): Observable<any> {
+    
+      const url: string = env.baseUrlApi + this.PATH +
+        this.PATH_ENTRY.replace('{funcionarioId}', employeeId);
+
+      const params: string = `?pag=${page}&ord=${order}&dir=${direction}`;
+
+      return this.http.get(url + params, this.httpUtil.headers());
+  }
+
+  deleteEntry(employeeId: string): Observable<any> {
+    return this.http.delete(env.baseUrlApi + this.PATH + '/' + employeeId, this.httpUtil.headers())
+  }
+
+  getEntryById(entryId: string):Observable<any> {
+    return this.http.get(env.baseUrlApi + this.PATH + '/' + entryId, this.httpUtil.headers());
+  }
+
+  update(entry: Entry): Observable<any> {
+    return this.http.put(env.baseUrlApi + this.PATH + '/' + entry.id, entry, this.httpUtil.headers())
+  }
 }

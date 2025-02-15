@@ -12,6 +12,7 @@ import { RegisterPfRoutingModule } from './auth/register-pf/register-pf-routing.
 import { RegisterPfModule } from './auth/register-pf';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeeModule, EmployeeRoutingModule } from './employee';
+import { AdminModule, AdminRoutingModule } from './admin';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { EmployeeModule, EmployeeRoutingModule } from './employee';
     RegisterPfRoutingModule,
     EmployeeModule,
     EmployeeRoutingModule,
+    AdminModule,
+    AdminRoutingModule,
 
     AppRoutingModule
   ],

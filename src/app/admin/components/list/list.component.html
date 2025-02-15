@@ -1,0 +1,66 @@
+<form [formGroup]="form" novalidate>
+    <mat-form-field>
+        <mat-select 
+            placeholder="Funcionários" 
+            formControlName="employee"
+            [(value)]="employeeId"
+            (selectionChange)="showEntry()">
+            <mat-option 
+            *ngFor="let item of employees"
+            [value]="item.id"
+            >{{ item.nome }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<a mat-button color="warn" [routerLink]="['/admin/cadastro']" *ngIf="employeeId">
+    Adicionar Lançamento
+</a>
+<mat-table 
+    #table 
+    [dataSource]="dataSource" 
+    matSort 
+    (matSortChange)="ordenate($event)">
+
+    <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
+            {{entry.data | dateBr}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
+            {{entry.tipo | type}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="local">
+        <mat-header-cell *matHeaderCellDef>Localização</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
+            {{entry.localizacao}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acao">
+        <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
+            <a [routerLink]="'/admin/atualizacao/' + entry.id">
+                <mat-icon matTooltip="Editar lançamento">create</mat-icon>
+            </a>
+            <a (click)="showDialog(entry.id)">
+                <mat-icon matTooltip="Remover lançamento">clear</mat-icon>
+            </a>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: cols"></mat-row>
+</mat-table>
+
+<mat-paginator
+    [length]="totalEntry"
+    [pageSize]="20"
+    (page)="paginate($event)"
+>
+</mat-paginator>
