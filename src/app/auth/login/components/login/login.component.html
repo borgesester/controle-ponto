@@ -1,14 +1,15 @@
 <div class="content-login">
-  <form [formGroup]="form" novalidate >
-    <mat-list class="content">
-      <mat-list-item>
-        <mat-form-field class="input">
-            <input matInput placeholder="E-mail" formControlName="email" />
+  <form [formGroup]="form" novalidate class="form-content-login">
+    <mat-list>
+      <mat-list-item class="content-list-item">
+        <mat-form-field class="content-input">
+          <input matInput placeholder="E-mail" formControlName="email" />
         </mat-form-field>
       </mat-list-item>
-      <mat-list-item>
+
+      <mat-list-item class="content-list-item">
         <div class="content-password">
-          <mat-form-field class="input">
+          <mat-form-field class="content-input">
             <input
               type="password"
               matInput
@@ -16,16 +17,16 @@
               formControlName="senha"
             />
           </mat-form-field>
-            <span matTooltip="A senha deve conter ao menos 6 caracteres">
+          <span matTooltip="A senha deve conter ao menos 6 caracteres">
             <mat-icon>help</mat-icon>
           </span>
         </div>
-        
-        
       </mat-list-item>
-      <mat-list-item class="item-center">
+
+      <mat-list-item class="content-list-item">
         <button
           mat-raised-button
+          class="button-login"
           color="primary"
           [disabled]="form.invalid"
           (click)="logon()"
@@ -33,10 +34,12 @@
           Entrar
         </button>
       </mat-list-item>
-      <mat-list-item class="item-center">
+
+      <mat-list-item class="content-list-item">
           <a mat-button color="primary" routerLink="/cadastro-pf">Cadastrar PF</a>
           <a mat-button color="primary" [routerLink]="['/cadastro-pj']">Cadastrar PJ</a>
       </mat-list-item>
+
     </mat-list>
   </form>
 </div>

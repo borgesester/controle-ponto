@@ -1,20 +1,39 @@
+$mobile: 468px;
+
 .content-login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 
-    .input {
-        width: 400px;
-    }
+    .form-content-login {
+        max-width: 90vw;
+        width: 100%;
 
-    .content-password {
-        display: flex;
-        align-items: center;
-    }
+        .content-list-item {
+            text-align: center;
 
-    .item-center {
-        text-align: center;
+            .content-input {
+                max-width: 400px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .content-password {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 24px;
+
+                @media screen and (max-width: $mobile) {
+                    margin-left: 0;
+                }
+            }
+
+            .button-login {
+                width: 200px;
+            }
+        }
     }
 }
 
