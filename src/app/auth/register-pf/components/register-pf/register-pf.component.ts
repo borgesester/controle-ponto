@@ -13,41 +13,25 @@ import { RegisterPfService } from '../../services';
 })
 export class RegisterPfComponent implements OnInit {
 
-  form: FormGroup;
   constructor(
-    private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private router: Router,
     private registerPfService: RegisterPfService
   ) { }
 
   ngOnInit(): void {
-    this.generateForm();
   }
 
-  generateForm() {
-    this.form = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      cpf: ['', [Validators.required, CpfValidator]],
-      cnpj: ['', [Validators.required, CnpjValidator]],
-    });
-  }
+ 
 
-  register() {
-    if (this.form.invalid) {
-      return;
-    }
+  register(form: FormGroup) {
 
     const data: RegistrationPf = new RegistrationPf('', '', '', '', '', '');
-        Object.assign(data, this.form.value);
+        Object.assign(data, form.value);
         
         this.registerPfService.registerPf(data).subscribe(
           {
-            next: (datResponse) => {
-              console.log(datResponse);
-    
+            next: (datResponse) => {    
               const message = 'Realize o login para acessar o sistema.';
               this.snackBar.open(message, 'Sucesso', { duration: 5000 });
               this.router.navigate(['/login']);

@@ -6,7 +6,6 @@ import { TypePipe } from './pipes/type.pipe';
 import { DateBrPipe } from './pipes/date-br.pipe';
 
 
-
 @NgModule({
   declarations: [
     MaskDirective,

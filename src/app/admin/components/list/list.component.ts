@@ -25,9 +25,10 @@ export class ListComponent implements OnInit {
   private direction: string;
 
   employees: Employee[];
-  form: FormGroup
 
   @ViewChild(MatSelect, {static:true}) matSelect: MatSelect
+  form: FormGroup;
+
   
 
   constructor(
@@ -67,10 +68,10 @@ export class ListComponent implements OnInit {
         const userId = this.httpUtil.getUserId();
         this.employees = (data.data as Employee[]).filter(
           emp => emp.id != userId
-        );
+        );        
 
         if(this.empId) {
-          this.form.get('employee').setValue(parseInt(this.empId, 0));
+          this.form.get('employee').setValue(parseInt(this.empId, 10));
           this.showEntry();
         }
       },
@@ -82,8 +83,8 @@ export class ListComponent implements OnInit {
   }
 
   showEntry() {
-    if(this.matSelect.selected){
-      this.employeeId = this.matSelect.selected['value'];
+    if(this.matSelect.selected){      
+      this.employeeId = this.matSelect.selected['value'];      
     } else if(this.empId){
       this.employeeId = this.empId
     } else {
@@ -94,7 +95,9 @@ export class ListComponent implements OnInit {
     this.entryService.listEntryByEmployee(this.employeeId, this.page, this.order, this.direction).subscribe({
       next:(data) =>  {        
         this.totalEntry = data['data'].totalElements;
+        
         const entry = data['data'].content as Entry[];
+        
         this.dataSource = new MatTableDataSource<Entry>(entry);
       },
       error:(err) => {

@@ -29,6 +29,7 @@ export class EntryComponent implements OnInit {
     this.getLocation();
     this.lastEntryType = '';
     this.getLastEntryType();
+    
   }
 
   getLocation() {
@@ -100,11 +101,12 @@ export class EntryComponent implements OnInit {
   showInitWork() {
     return this.lastEntryType === '' ||
       this.lastEntryType === Type.EXIT_WORK;
+      
   }
 
   showFinishWork() {
     return this.lastEntryType === '' ||
-      this.lastEntryType === Type.EXIT_LUNCH;
+      this.lastEntryType === Type.EXIT_LUNCH || this.lastEntryType === 'TERMINO_PAUSA';
   }
 
   showInitLunch() {
@@ -114,6 +116,6 @@ export class EntryComponent implements OnInit {
 
   showFinishLunch() {
     return this.lastEntryType === '' ||
-      this.lastEntryType === Type.ENTRY_LUNCH;
+      this.lastEntryType === Type.ENTRY_LUNCH || this.lastEntryType === 'INICIO_PAUSA';
   }
 }

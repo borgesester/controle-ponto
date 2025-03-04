@@ -1,7 +1,7 @@
 <form [formGroup]="form" novalidate>
     <mat-list>
         <mat-list-item>
-            <mat-form-field>
+            <mat-form-field class="form-field-input-data">
                 <input 
                     matInput 
                     placeholder="Data"
@@ -14,26 +14,32 @@
             </mat-form-field>
         </mat-list-item>
 
-        <mat-list-item>
-            <mat-form-field>
-                <mat-select placeholder="Horas" formControlName="horas">
-                    <mat-option 
-                        *ngFor="let item of hours"
-                        [value]="item">{{item}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            &nbsp;&nbsp;
-            <mat-form-field>
-                <mat-select placeholder="Minutos" formControlName="minutos">
-                    <mat-option 
-                        *ngFor="let item of minutes"
-                        [value]="item">{{item}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-list-item>
+        
+        <div class="list-item-selects-content">
+            <mat-list-item class="form-selects">
+                <mat-form-field class="form-field-selects">
+                    <mat-select placeholder="Horas" formControlName="horas">
+                        <mat-option 
+                            *ngFor="let item of hours"
+                            [value]="item">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="form-selects">
+                <mat-form-field class="form-field-selects">
+                    <mat-select placeholder="Minutos" formControlName="minutos">
+                        <mat-option 
+                            *ngFor="let item of minutes"
+                            [value]="item">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-list-item>
+        </div>
+            
+        
 
         <mat-list-item>
-            <mat-form-field>
+            <mat-form-field class="form-field-select-type">
                 <mat-select placeholder="Tipo" formControlName="tipo">
                     <mat-option 
                         *ngFor="let item of types"
@@ -42,14 +48,15 @@
             </mat-form-field>
         </mat-list-item>
 
-        <mat-list-item>
+        <div class="content-button">
             <button 
+                class="button"
                 mat-raised-button 
                 color="primary"
                 [disabled]="form.invalid"
-                (click)="register()">Cadastrar</button>
+                (click)="register()">{{entryId ? 'Atualizar' : 'Cadastrar'}}</button>
             &nbsp;
-            <a mat-button color="primary" routerLink="/admin">Voltar</a>
-        </mat-list-item>
+            <a class="button" mat-button color="primary" routerLink="/admin">Voltar</a>
+        </div>
     </mat-list>
 </form>

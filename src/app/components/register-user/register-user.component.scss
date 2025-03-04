@@ -1,0 +1,47 @@
+.content-password-user {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.content-input-razaoSocial {
+    width: 60%;
+}
+.content-input-cnpj {
+    width: 60%;
+}
+.content-input-cpf {
+    width: 50%;
+}
+.content-input-nome {
+    width: 60%;
+}
+.content-input-email {
+    width: 70%;
+}
+
+.content-item-user {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+
+    .content-button-user {
+        width: 200px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .content-input-cnpj,
+    .content-input-razaoSocial,
+    .content-input-cpf,
+    .content-input-email,
+    .content-input-nome, .content-input-senha {
+        width: 100%;
+    }
+
+    .content-item-user {
+        flex-direction: column;
+        align-items: center;
+    }
+}

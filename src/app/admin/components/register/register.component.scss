@@ -1,0 +1,54 @@
+.form-field-input-data {
+    width: 60%;
+}
+
+.list-item-selects-content {
+    display: flex;
+
+    .form-selects {
+        width: 45%;
+
+        .form-field-selects {
+            width: 100%;
+        }
+    }
+
+    
+}
+
+.form-field-select-type {
+    width: 50%;
+}
+
+.content-button {
+    padding-top: 36px;
+    padding-left: 16px;
+    display: flex;
+
+    .button {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .form-field-input-data {
+        width: 100%;
+    }
+    .list-item-selects-content {
+        flex-direction: column;
+
+        .form-selects {
+            width: 100%;
+        }
+    }
+
+    .form-field-select-type {
+        width: 100%;
+    }
+
+    .content-button {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}

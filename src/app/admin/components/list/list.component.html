@@ -3,7 +3,6 @@
         <mat-select 
             placeholder="Funcionários" 
             formControlName="employee"
-            [(value)]="employeeId"
             (selectionChange)="showEntry()">
             <mat-option 
             *ngFor="let item of employees"
@@ -49,7 +48,7 @@
                 <mat-icon matTooltip="Editar lançamento">create</mat-icon>
             </a>
             <a (click)="showDialog(entry.id)">
-                <mat-icon matTooltip="Remover lançamento">clear</mat-icon>
+                <mat-icon class="icon-delete" matTooltip="Remover lançamento">clear</mat-icon>
             </a>
         </mat-cell>
     </ng-container>
@@ -60,7 +59,7 @@
 
 <mat-paginator
     [length]="totalEntry"
-    [pageSize]="20"
+    [pageSize]="25"
     (page)="paginate($event)"
 >
 </mat-paginator>

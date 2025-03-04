@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { AdminComponent, ListComponent, RegisterComponent, UpdateComponent } from "./components";
+import { AdminComponent, ListComponent, RegisterComponent } from "./components";
 import { AdminGuardService } from "./services";
 
 export const adminRoutes = [
@@ -19,7 +19,7 @@ export const adminRoutes = [
             },
             {
                 path: 'atualizacao/:lancamentoId',
-                component: UpdateComponent
+                component: RegisterComponent
             }
 
         ]

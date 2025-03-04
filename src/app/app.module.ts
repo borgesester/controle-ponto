@@ -13,10 +13,11 @@ import { RegisterPfModule } from './auth/register-pf';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeeModule, EmployeeRoutingModule } from './employee';
 import { AdminModule, AdminRoutingModule } from './admin';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

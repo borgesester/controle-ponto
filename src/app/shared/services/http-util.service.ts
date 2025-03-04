@@ -41,10 +41,7 @@ export class HttpUtilService {
   getDataUser() {
     if (!localStorage['token']) {
       return '';
-    }
-
-    console.log(JSON.parse(atob(localStorage['token'].split('.')[1])));
-    
+    }    
     return JSON.parse(atob(localStorage['token'].split('.')[1]));
   }
 

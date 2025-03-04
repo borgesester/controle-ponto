@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.generateForm()
   }
 
-  generateForm() {
+  generateForm() {    
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
     this.loginService.login(login).subscribe(
       {
         next: (datResponse) => {
-          console.log(datResponse);
           localStorage['token'] = datResponse['data']['token'];
           const user = JSON.parse(atob(datResponse['data']['token'].split('.')[1]));
 

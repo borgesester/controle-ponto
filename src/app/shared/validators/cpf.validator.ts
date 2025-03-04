@@ -1,12 +1,13 @@
 import { AbstractControl } from "@angular/forms";
 
 export class CpfValidator {
-    static validate(control: AbstractControl): {[key: string]: boolean} {
+    static validate(control: AbstractControl) {
         
-        if (this.cpfValid(control.value)) {            
+        if (this.cpfValid(control.value)) {     
             return null;
         }
-        return { 'cpf': true };
+        
+        return { cpfValid: true };
     }
 
     static cpfValid(cpf: any): boolean {        
@@ -49,7 +50,5 @@ export class CpfValidator {
         }
         
         return ((digits + '' + verificationDigit) === cpf.substring(cpf.length, cpf.length - 2));
-        
-    
     }
 }

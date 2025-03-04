@@ -12,8 +12,10 @@ import { Entry, EntryService, Type } from 'src/app/shared';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  entryId: string;
   hours: string[];
   minutes: string[];
+  local: string;
   types: Type[];
 
   constructor(
@@ -25,6 +27,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.entryId = this.route.snapshot.paramMap.get('lancamentoId')
     this.generateForm();
     this.hours = this.generateListNumbers(0, 23)
     this.minutes = this.generateListNumbers(0, 59)
@@ -34,6 +37,11 @@ export class RegisterComponent implements OnInit {
       Type.EXIT_LUNCH,
       Type.EXIT_WORK
     ]
+
+    if(this.entryId) {
+      this.getDataEntry();
+    }
+
   }
 
   generateForm() {
@@ -44,6 +52,25 @@ export class RegisterComponent implements OnInit {
       minutos: ['', [Validators.required]],
     })
   }
+
+  getDataEntry() {
+    this.entryService.getEntryById(this.entryId).subscribe({
+      next:(value) => {
+        const data = value.data.data
+        this.form.get('data').setValue(data.substr(0, 10))
+        this.form.get('horas').setValue(data.substr(11, 2))
+        this.form.get('minutos').setValue(data.substr(14, 2))
+        this.form.get('tipo').setValue(value.data.tipo)
+        this.local = value.data.localizacao
+      },
+      error:(err) => {
+        const message = 'Erro ao obter os dados de lançamento.';   
+        this.snackBar.open(message, 'Erro', {duration:5000})
+        this.router.navigate(['/admin'])
+      },
+    })
+  }
+
 
   generateListNumbers(init: number, finish: number) {
     const numbers: string[] = Array();
@@ -58,10 +85,35 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.entryId ? this.updateDataEntry() : this.registerNewDataEntry();
+  }
+
+  registerNewDataEntry() {
     if(this.form.invalid) return;
 
     const data = this.form.value;
     this.entryService.add(this.getEntryBody(data)).subscribe({
+      next:(data) => {
+        const message = 'Lançamento cadastrado com sucesso.'
+        this.snackBar.open(message, 'Sucesso', {duration:5000})
+        this.router.navigate(['/admin'])
+      },
+      error:(err) => {
+        let message = 'Tente novamente em instantes.';
+        if(err.status == 400){
+          message = err.error.errors.join(' ');
+        }
+        this.snackBar.open(message, 'Erro', {duration:5000})
+      },
+    })
+  }
+
+  updateDataEntry() {
+    if(this.form.invalid) return;
+
+    const data = this.form.value;
+    
+    this.entryService.update(this.getEntryBody(data)).subscribe({
       next:(data) => {
         const message = 'Lançamento cadastrado com sucesso.'
         this.snackBar.open(message, 'Sucesso', {duration:5000})
@@ -85,12 +137,22 @@ export class RegisterComponent implements OnInit {
       second: 0
     })
 
-    return new Entry(
-      data.format('YYYY-MM-DD HH:mm:ss'),
-      datas.tipo,
-      '',
-      this.employeeId,
-    )
+    if(this.entryId){
+      return new Entry(
+        data.format('YYYY-MM-DD HH:mm:ss'),
+        datas.tipo,
+        this.local,
+        this.employeeId,
+        this.entryId
+      )
+    } else {
+      return new Entry(
+        data.format('YYYY-MM-DD HH:mm:ss'),
+        datas.tipo,
+        '',
+        this.employeeId,
+      )
+    }
   }
 
   get employeeId() {

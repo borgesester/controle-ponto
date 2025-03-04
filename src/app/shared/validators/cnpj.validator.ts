@@ -6,7 +6,7 @@ export class CnpjValidator {
         if (this.cnpjValid(control.value)) {            
             return null;
         }
-        return { 'cpf': true };
+        return { 'cnpj': true };
     }
 
     static cnpjValid(cnpj: any): boolean {        

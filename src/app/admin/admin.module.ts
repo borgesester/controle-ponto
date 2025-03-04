@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UpdateComponent, RegisterComponent, ListComponent, AdminComponent, ConfirmDialog } from './components/';
+import { RegisterComponent, ListComponent, AdminComponent, ConfirmDialog } from './components/';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,6 @@ import { AdminGuardService } from './services';
 
 @NgModule({
   declarations: [
-    UpdateComponent,
     RegisterComponent,
     ListComponent,
     AdminComponent,
