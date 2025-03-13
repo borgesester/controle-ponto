@@ -56,6 +56,51 @@ describe('EntryService', () => {
     });
   });
 
+  describe('listAllEntry', () => {
+    it('should call listAllEntry and return ', () => {
+
+      const mockEntryByEmpResponse = {
+        data: [
+          
+        ]   
+      }
+      const empId = '2'
+      service.listAllEntry().subscribe((res) => {
+        expect(res).toEqual(mockEntryByEmpResponse);
+      });
+
+      const req = httpController.expectOne({
+        method: 'GET'
+      });
+  
+      req.flush(mockEntryByEmpResponse);
+      httpController.verify()
+    });
+  });
+
+  describe('getLastEntry', () => {
+    it('should call getLastEntry and return ', () => {
+
+      const mockEntryByEmpResponse = {
+        data: [
+          
+        ]   
+      }
+      service.getLastEntry().subscribe((res) => {
+        expect(res).toEqual(mockEntryByEmpResponse);
+      });
+
+      const req = httpController.expectOne({
+        method: 'GET'
+      }
+      );
+
+  
+      req.flush(mockEntryByEmpResponse)
+      httpController.verify();
+    });
+  });
+
   describe('listEntryByEmployee', () => {
     it('should call listEntryByEmployee and return ', () => {
 
