@@ -66,6 +66,7 @@ export class ListComponent implements OnInit {
     this.employeeService.listEmpByEmploy().subscribe({
       next:(data) =>  {
         const userId = this.httpUtil.getUserId();
+        
         this.employees = (data.data as Employee[]).filter(
           emp => emp.id != userId
         );        
@@ -119,6 +120,7 @@ export class ListComponent implements OnInit {
   deleteEntry(entryId: string) {
     this.entryService.deleteEntry(entryId).subscribe({
       next:(data) => {
+        console.log(data);     
         const message = 'Lançamento removido com sucesso!'
         this.snackBar.open(message, 'Sucesso', {duration: 5000})
         this.showEntry();

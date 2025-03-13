@@ -24,7 +24,7 @@ export class ListComponent implements OnInit{
 
   ngOnInit(): void {
     this.entryService.listAllEntry().subscribe({
-      next:(data) => {
+      next:(data) => {        
         const entry = data['data'] as Entry[];
         this.dataSource = new MatTableDataSource<Entry>(entry)
         this.dataSource.sort = this.sort;

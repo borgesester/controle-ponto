@@ -19,6 +19,7 @@ export class EmployeeService {
   ) { }
 
   listEmpByEmploy(): Observable<any> {
+    
     return this.http.get(env.baseUrlApi + this.PATH + this.PATH_EMP_BY_EMPLOY.replace(
       '{empresaId}', this.httpUtil.getEmployId()
     ), this.httpUtil.headers());

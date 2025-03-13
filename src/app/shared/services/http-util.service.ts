@@ -14,7 +14,7 @@ export class HttpUtilService {
     if (localStorage['token']) {
       httpHeaders = httpHeaders.set(
         'Authorization', 'Bearer ' + localStorage['token']
-      );
+      );      
     }
 
     return {headers: httpHeaders};
@@ -41,7 +41,7 @@ export class HttpUtilService {
   getDataUser() {
     if (!localStorage['token']) {
       return '';
-    }    
+    }        
     return JSON.parse(atob(localStorage['token'].split('.')[1]));
   }
 

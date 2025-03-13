@@ -78,7 +78,7 @@ export class EntryComponent implements OnInit {
     )
 
     this.entryService.add(entry).subscribe({
-      next:(value) => {
+      next:(value) => {        
         const message = 'Lançamento realizado com sucesso!';
         this.snackBar.open(message, "Sucesso", {duration: 5000});
         this.router.navigate(['/funcionario/listagem']);

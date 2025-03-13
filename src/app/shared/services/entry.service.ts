@@ -67,7 +67,6 @@ export class EntryService {
   }
 
   update(entry: Entry): Observable<any> {
-    console.log(entry);
     return this.http.put(env.baseUrlApi + this.PATH + '/' + entry.id, entry, this.httpUtil.headers())
   }
 }

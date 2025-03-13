@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.entryId = this.route.snapshot.paramMap.get('lancamentoId')
+    
     this.generateForm();
     this.hours = this.generateListNumbers(0, 23)
     this.minutes = this.generateListNumbers(0, 59)
@@ -56,6 +57,8 @@ export class RegisterComponent implements OnInit {
   getDataEntry() {
     this.entryService.getEntryById(this.entryId).subscribe({
       next:(value) => {
+        console.log('valor: ', value);
+        
         const data = value.data.data
         this.form.get('data').setValue(data.substr(0, 10))
         this.form.get('horas').setValue(data.substr(11, 2))
@@ -115,6 +118,8 @@ export class RegisterComponent implements OnInit {
     
     this.entryService.update(this.getEntryBody(data)).subscribe({
       next:(data) => {
+        console.log(data);
+        
         const message = 'Lançamento cadastrado com sucesso.'
         this.snackBar.open(message, 'Sucesso', {duration:5000})
         this.router.navigate(['/admin'])
